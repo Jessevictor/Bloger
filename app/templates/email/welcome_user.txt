@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to My Personal Blog
+Have just seen you have signed up for my application and want to welcome you to the family. Please efeel to leave any message.

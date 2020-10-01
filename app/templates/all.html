@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container-fluid" style="background-color: #778beb;">
+    <div class="row">
+        <div class="col-md-4">
+            {% for post in posts %}
+            <h2 style="font-size: 20px; color: white; font-family: Georgia, 'Times New Roman', Times, serif; ">{{ post.post_title }}</h2>
+            <p style="font-size: 20px;">{{ post.description}}</p>
+            <h6  style="font-size: 20px;" class="post-name">Posted by {{post.author.username}}</h6>
+            <p style="font-size: 20px;" class="date">Posted on - {{post.date.strftime('%Y-%m-%d')}}</p>
+            <a style="font-size: 20px;" href="{{ url_for('main.view', id=post.id) }}" class="btn btn-sm btn-danger"> <i class="fa fa-eye"></i> View
+                more</a>
+            <a style="font-size: 20px;" href="{{ url_for('main.view', id=post.id) }}" class="btn btn-sm btn-info"><i
+                    class="fa fa-comment"></i> Comment</a>
+            {% endfor %}
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <h2 style="color: white;">{{ quote.author}}</h2>
+                <hr style="border: 2px dashed black;">
+                <h2 style="font-family: 'Special Elite', cursive;
+                ">{{quote.quote}}</h2>
+                <a style="font-size:20px;" href="{{quote.permalink}}" target="_blank" class="btn btn-danger">visit more quotes</a>
+            </div>
+           
+            
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

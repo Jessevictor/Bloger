@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="container-fluid" id="post-banner" style="background-color:#778beb;">
+    <h2 style="font-weight: 900; font-size: 30px; color: white;" class="text-center">Add Post</h2>
+    <p class="text-center" style="font-size: 20px;">Add your Quote post here..</p>
+
+    <div class="container pt-2">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 pt-3">
+                {{ wtf.quick_form(post_form)}}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

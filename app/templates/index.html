@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Yellowtail&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content%}
+
+
+
+<div class="container-fluid" style="background-color: #778beb;">
+    <div class="row">
+        <h2 style="color: white;text-align: center; padding-top: 50px; font-family: 'Press Start 2P', cursive;
+                font-family: 'Yellowtail', cursive; font-weight: 900;">WELCOME BLOGER</h2>
+                <hr style="width: 350px;">
+
+        {% if current_user.is_anonymous%}
+
+        {%endif%}
+        </ul>
+    </div>
+ <!-- Main Content -->
+    <div class="container-fluid" style="padding-top:120px ; padding-left: 50px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="color: white;">Quote of the day...</h2>
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote text-center">
+                            <p class="mb-0">{{quotes.quote}}</p>
+                            <footer style="color: white;" class="blockquote-footer"><cite>{{quotes.author}}</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg- col-md-6 mx- tex-center">
+                {% for post in posts %}
+                <div class="post-preview text-center">
+                    <a href="{{ url_for('main.post', post_id=post.id)}}">
+                        <h2 class="post-title">
+                            {{post.title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{post.subtitle}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by {{post.user.username}} on {{post.date.strftime('%B %d, %Y')}}</p>
+                </div>
+               
+                {% endfor %}
+                
+
+            </div>
+            <div class="col-md-3">
+                <h2 style="color: white; font-size: 20px;">Please subscribe to my page</h2>
+                <div class="w-50">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <form action="{{url_for('main.subscribe')}}" method="POST">
+                        <div class="form-group">
+                            <input type="email" form-control name="email" style="border-radius:10px;"
+                                placeholder="Enter email..." required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="subscribe" form-control class="bg-danger text-light"
+                                style="border-radius:10px;">
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div" style="padding-top:100px ;">
+        <p style="font-size: 30px; color:brown; text-align: center;font-family: 'Bangers', cursive;">@kongoivictor
+        </p>
+
+    </div>
+
+{% endblock %}
