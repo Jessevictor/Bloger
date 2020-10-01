@@ -23,7 +23,7 @@
                 {% endfor %}
                 <!-- Login form  -->
 
-                {{ wtf.quick_form(login_form) }}
+                {{ wtf.quick_form(form) }}
 
                 <p style="color: brown;"> Don't have an account? <a style="color: white;" href="{{url_for('auth.register')}}">Sign up here</a>
                 </p>
