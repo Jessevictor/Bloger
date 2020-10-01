@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
-<div class="container-fluid" id="post-banner" style="background-color:#778beb;">
+<div class="container-fluid" id="post-banner" style="background-image: url({{ url_for('static', filename='photos/BACK2.jpg') }});">
     <h2 style="font-weight: 900; font-size: 30px; color: white;" class="text-center">Add Post</h2>
     <p class="text-center" style="font-size: 20px;">Add your Quote post here..</p>
 
